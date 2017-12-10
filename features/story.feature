@@ -8,6 +8,11 @@ Feature: Story
       | title    | author          | intro                                                                                    |
       | Starship | Mariza & Alfred | Once upon a time, in a far away galaxy. There was a young team on the Discovery Starship |
 
+    And the following user exists
+      | email                       | password |
+      | jenny@ranom.com             | password |
+      | daniel@random.com           | password |
+
     And the following chapters exists
       | parent_chapter        | title                 | content                                                   |
       |                       | The story begins      | There is a huge asteroid coming your way, what do you do? |
@@ -24,25 +29,34 @@ Feature: Story
     And I click "Take me to the story"
     Then I visit the "Starship" story page
 
+  Scenario: User can't read story if not logged in
+    Given I visit the landing page
+    And I click "Take me to the story"
+    Then I should see "You need to sign in or sign up before continuing"
+
   Scenario: User reads first part of a story
+    Given I am logged in as random user
     When I visit the "Starship" story page
     Then I should see "Starship"
     And I should see "Mariza & Alfred"
     And I should see "Once upon a time, in a far away galaxy. There was a young team on the Discovery Starship"
 
   Scenario: User starts the story
+    Given I am logged in as random user
     When I visit the "Starship" story page
     And I click "Start Story"
     Then I should be on the "The story begins" chapter
     And I should see "There is a huge asteroid coming your way, what do you do?"
 
   Scenario: User makes first decision
+    Given I am logged in as random user
     When I visit the "Starship" story page
     And I click "Start Story"
     And I click "Shoot it with a laser"
     Then I should be on the "Shoot it with a laser" chapter
 
   Scenario: User makes second decision
+    Given I am logged in as random user
     When I visit the "Starship" story page
     And I click "Start Story"
     And I click "Shoot it with a laser"
@@ -51,6 +65,7 @@ Feature: Story
     Then I should be on the "Talk" chapter
 
   Scenario: User makes c decision
+    Given I am logged in as random user
     When I visit the "Starship" story page
     And I click "Start Story"
     And I click "Shoot it with a laser"
@@ -59,6 +74,7 @@ Feature: Story
     Then I should be on the "Run" chapter
 
   Scenario: User finishes story
+    Given I am logged in as random user
     When I visit the "Starship" story page
     And I click "Start Story"
     And I click "Shoot it with a laser"

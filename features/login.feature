@@ -51,5 +51,4 @@ Feature: Login/Logout
     And I visit the landing page
     When I click "Logout" link
     Then I should be on the landing page
-    And show me the page
     And I should see "Signed out successfully."
