@@ -1,4 +1,9 @@
-<h1> <%= @story.title %> </h1>
-<p> Written by: <%= @story.author %> </p>
-<p> <%= @story.intro %> </p>
-<p><%= link_to 'Start Story', story_chapter_path(@story, @first_chapter) %></p>
+<section>
+  <div class="container">
+    <img class="img-fluid" src="starship.jpg" alt="Starship">
+    <h1> <%= @story.title %> </h1>
+    <p> Written by: <%= @story.author %> </p>
+    <p> <%= @story.intro %> </p>
+    <p><%= link_to 'Start Story', story_chapter_path(@story, @first_chapter) %></p>
+  </div>
+</section>

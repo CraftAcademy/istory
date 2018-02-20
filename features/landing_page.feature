@@ -21,7 +21,7 @@ Feature: iStory landing page
   Scenario: Display content on landing page
     Given I visit the landing page
     Then I should see "iStory"
-    And I should see "An interactive journey"
+    And I should see "Welcome to an interactive journey"
     And I should see "Login" button
     And I should see "Sign up" button
     And I should see "Starship" element

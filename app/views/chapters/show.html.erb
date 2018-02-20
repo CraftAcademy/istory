@@ -1,10 +1,17 @@
-<p> <%= @chapter.content %> </p>
-
-
-<% @chapter.child_chapters.each do |child_chapter| %>
-  <%= link_to child_chapter.title, story_chapter_path(@chapter.story, child_chapter) %>
-<% end %>
-
-<% if @chapter.child_chapters == [] %>
-  <%= link_to "Home Page", root_path %>
-<% end %>
+<section class="jumbotron text-center">
+   <div class="container">
+     <h1 class="jumbotron-heading">
+       <%= @chapter.content %>
+     </h1>
+     <p class="lead">
+       <% @chapter.child_chapters.each do |child_chapter| %>
+       <%= link_to child_chapter.title, story_chapter_path(@chapter.story, child_chapter) %>
+     <% end %>
+     </p>
+     <p>
+     <% if @chapter.child_chapters == [] %>
+       <%= link_to "Home Page", root_path %>
+     <% end %>
+   </p>
+   </div>
+ </section>

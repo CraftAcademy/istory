@@ -1,11 +1,37 @@
-<h1>iStory</h1>
-<p>An interactive journey</p>
-<p></p>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">iStory</h1>
+    <p class="lead">Welcome to an interactive journey</p>
+  </div>
+</section>
 
-<div id="stories-container">
-  <% @stories.each do |story| %>
-      <h1><%= story.title %></h1>
-      <h4><%= story.intro %></h4>
-      <h4><%= link_to 'Take me to the story', story_path(story) %></h4>
-  <% end %>
+<div class="container">
+  <div class="row">
+      <div class="card">
+        <img class="card-img-top" src="starship.jpg" alt="Starship">
+          <div class="card-body">
+            <% @stories.each do |story| %>
+            <h4 class="card-title"><%= story.title %></h4>
+            <p class="card-text"><%= story.intro %>Once upon a time, in a far away galaxy. There was a young team on the Discovery Starship</p>
+            <div class="btn btn-primary"><%= link_to 'Take me to the story', story_path(story), class: 'css_style', style: 'color:white' %></div>
+            <% end %>
+          </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="wonderland.jpg" alt="wonderland">
+      <div class="card-body">
+        <h4 class="card-title">Wonderland</h4>
+        <p class="card-text">Wondering down a forest path, Alex feels drawn to the mysterious flowers that seem to form a wall along the path. Suddenly the road forks, where should she go? To the left or to the right?</p>
+        <a href="#" class="btn btn-primary">Take me to there</a>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="far_far_away.jpg" alt="Far_away">
+      <div class="card-body">
+        <h4 class="card-title">Far far away</h4>
+        <p class="card-text">Since Sam told James about the magical kingdom of Far Far Away. James hasn't been able to think about anything else, should he go? Would you go?</p>
+        <a href="#" class="btn btn-primary">Take me to there</a>
+      </div>
+    </div>
+  </div>
 </div>

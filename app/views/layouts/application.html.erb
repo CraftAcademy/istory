@@ -9,27 +9,37 @@
   </head>
   <body>
     <section id="navbar">
-
-      <% if user_signed_in? %>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-          <ul>
-            <li><%= link_to "Login", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><%= link_to "Login with Facebook", user_facebook_omniauth_authorize_path %></li>
+      <nav class="navbar navbar-expand-sm bg-light">
+        <div class="container">
+          <%= link_to "iStory", root_path, class: "navbar-brand" %>
+          <ul class="nav">
+            <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete %></li>
+            <% else %>
+              <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Login with Facebook", user_facebook_omniauth_authorize_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+            <% end %>
           </ul>
-      <% end %>
+        </div>
+      </nav>
     </section>
+
     <section id="content">
       <% flash.each do |key, value| %>
-          <%= content_tag :div, value %>
+        <% if notice %>
+              <%= content_tag :div, value, class: "alert alert-success #{key}" %>
+        <% elsif alert %>
+          <%= content_tag :div, value, class: "alert alert-danger #{key}" %>
+        <% end %>
       <% end %>
-
       <%= yield %>
     </section>
-      <section id ="footer">
-        <p><%= link_to "Contact", '#' %></p>
-        <p><%= link_to "About", '#' %></p>
-      </section>
-    </body>
-  </html>
+    <footer id="footer" class="card-footer text-muted">
+      <div class="container">
+        <p style="word-spacing: 3em;"><%= link_to "Contact", '#' %>
+          <%= link_to "About", '#' %></p>
+      </div>
+    </footer>
+  </body>
+</html>
